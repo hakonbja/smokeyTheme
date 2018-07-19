@@ -1,0 +1,781 @@
+/*
+Theme Name: SmokeyTheme
+Author: Hakon
+Version: 1.0
+*/
+
+/* Style reset */
+@import url("./assets/css/reset.css");
+
+/* Font import */
+@font-face {
+    font-family: "Neptune";
+    src: url(./assets/fonts/neptune.otf);
+}
+
+/*
+@font-face {
+    font-family: "Driekleur";
+    font-weight: normal;
+    src: url(./assets/fonts/de-driekleur-regular.otf);
+}
+
+@font-face {
+    font-family: "Driekleur";
+    font-weight: bold;
+    src: url(./assets/fonts/de-driekleur-bold.otf);
+}
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+
+
+/* Variables */
+
+$sf18-blue: rgb(47, 109, 116);
+$sf18-light-blue: rgb(126, 171, 175);
+$sf18-lighter-blue: rgb(178, 197, 200);
+$sf18-orange: rgb(191, 129, 73);
+
+$backgr-color-dark: rgba(38, 38, 38, 1);
+$backgr-color-light: rgba(178, 197, 200, 1);
+//$backgr-color-light: rgba(126, 171, 175, 0.75);
+//$backgr-color-light: rgba(47, 109, 116, 0.75);
+
+$rotation: -3deg;
+
+/* Extends */
+
+%neptune {
+  font-family: 'Neptune', sans-serif;
+  text-transform: uppercase;
+}
+
+%parallax {
+  height: 300px;
+  width: 110vw;
+  //background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 110%;
+  background-color: grey;
+  background-blend-mode: soft-light;
+}
+
+
+/* General styling */
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-image: url(http://localhost/smokeyfeet/wp-content/uploads/2018/03/sails.png);
+  background-size: 400px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 2rem;
+  //margin-bottom: 1.5rem;
+  @extend %neptune;
+}
+
+h2 {
+  font-size: 1.75rem;
+  @extend %neptune;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  @extend %neptune;
+}
+
+h4 {
+  font-size: 1.35rem;
+  @extend %neptune;
+}
+
+h5 {
+  font-size: 1.2rem;
+  font-family: 'Lato', sans-serif;
+}
+
+h6 {
+  font-family: 'Lato', sans-serif;
+}
+
+p,
+a {
+  font-family: 'Lato', sans-serif;
+}
+
+a:visited,
+a:active,
+a {
+  color:inherit;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+
+main {
+  overflow: hidden;
+}
+
+main .container,
+.post-artists .container {
+  width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2.5rem;
+  //border-radius: 10px;
+  margin: 1rem auto;
+  //background-color: rgba(255,255,255, 0.25);
+}
+
+q { quotes: '\201c' '\201d'; }
+q:before { content: open-quote; }
+q:after  { content: close-quote; }
+
+/* Header */
+
+header .container {
+  width: 1140px;
+}
+
+#navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  transition: top 750ms;
+  width: 100%;
+  height: 4rem;
+  color: white;
+  background-color: $backgr-color-dark;
+  margin: 0;
+
+  ul {
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.navbar {
+  a {
+    padding: 1.5rem;
+    height: 100%;
+    min-width: 160px;
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  a:hover {
+    background-color: rgb(147, 147, 147);
+  }
+}
+
+#mobile-logo {
+  display: none;
+  height: 100%;
+}
+
+.stickyNavbar {
+  top: 0px !important;
+  position: fixed;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    background-color: $backgr-color-dark;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    transition: visibility 0s, opacity 700ms;
+    a {
+      display: block;
+    }
+}
+
+.dropdown:hover .dropdown-content {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Main content */
+
+.content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Jumbotron */
+.jumbotron {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  //border-bottom: $backgr-color-dark solid 4rem;
+  background-image: url(http://localhost/smokeyfeet/wp-content/uploads/2018/03/group-photo-2017.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: grey;
+  background-blend-mode: soft-light;
+  #logo {
+    z-index: 100;
+    height: 40%;
+    width: auto;
+    cursor: pointer;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
+    //transition: height 4000ms;
+  }
+}
+
+.stickyLogo {
+  position: fixed;
+  top: 1px;
+}
+
+.black-strip {
+  height: 4rem;
+  background-color: $backgr-color-dark;
+}
+
+section {
+  //padding: 2.5rem 0 2rem 0;
+  padding: 0;
+  h3 {
+    line-height: 1.3;
+  }
+}
+
+section:first-of-type {
+  margin-top: 0;
+}
+
+section:last-of-type {
+  margin-bottom: 0;
+}
+
+
+.parallax-1 {
+  background-image: url(http://localhost/smokeyfeet/wp-content/uploads/2018/03/social-dance-omval.jpg);
+  @extend %parallax;
+}
+
+.parallax-2 {
+  background-image: url(http://localhost/smokeyfeet/wp-content/uploads/2018/03/horns.jpg);
+  @extend %parallax;
+}
+
+.parallax-3 {
+  background-image: url(http://localhost/smokeyfeet/wp-content/uploads/2018/03/kuno-and-gosia.jpg);
+  @extend %parallax;
+}
+
+.parallax-4 {
+  background-image: url(http://localhost/smokeyfeet/wp-content/uploads/2018/03/band-and-crowd.jpg);
+  @extend %parallax;
+}
+
+.rot-parallax {
+  transform: rotate($rotation);
+  overflow: hidden;
+  //height: 200px;
+  width: 110%;
+  position: relative;
+  left: -10px;
+  margin: 3rem 0;
+}
+
+.unrot-parallax {
+  transform: rotate(-1*$rotation);
+  height: 200%;
+  width: 200%;
+  background-size: 150%;
+  img {
+    position: relative;
+    width: 101vw;
+  }
+  .img-overlay { //not in use right now
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    //opacity: 0;
+    //transition: 700ms ease;
+    //background-color: rgba(38, 38, 38, 0.5);
+    background-color: rgba(100, 100, 100, 0.5);
+  }
+}
+
+
+
+/* General info */
+
+#general-info {
+  text-align: center;
+  h1 {
+    font-size: 4rem;
+    margin: 1rem;
+  }
+  h2 {
+    margin: 1.5rem;
+  }
+  .date-location {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+  }
+  .date,
+  .location {
+    width: 25%;
+    margin: 1rem 0;
+  }
+  i {
+    font-size: 5rem;
+    color: rgba(191, 129, 73, 0.9);
+  }
+  h5 {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+  .reg-opens {
+    display: inline-block;
+    padding: 1rem 1.5rem 1.4rem 1.5rem;
+    box-shadow: 0px 1px 3px 1px grey;
+    white-space: nowrap;
+    //border-radius: 5px;
+    //border: solid $sf18-orange 2px;
+    background-color: rgba(225,225,225, 1);
+    h2 {
+      margin: 0;
+    }
+  }
+}
+
+/* Testimonials */
+
+#testimonials {
+  //height: 375px;
+  overflow: hidden;
+  position: relative;
+  .container {
+    padding: 1rem 2.5rem;
+  }
+  h3 {
+    margin: 2rem;
+    white-space: nowrap;
+  }
+  .testimonialSlides {
+    height: 16rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .testimonial {
+    position: absolute;
+    left: 150%;
+    right: 0;
+    margin: 0 auto;
+    width: 70%;
+    opacity: 0;
+    i {
+      color: rgba(191, 129, 73, 0.9);
+      position: relative;
+      font-size: 1.5rem;
+    }
+    .fa-quote-left {
+      top: -10px;
+      left: -10px;
+    }
+    .fa-quote-right {
+      bottom: -10px;
+      right: -10px;
+    }
+  }
+  .testimonial:first-of-type {
+    left: 0;
+    opacity: 1;
+  }
+  .quote {
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  .author {
+    text-align: right;
+    padding-right: 3rem;
+    font-family: 'Lato', sans-serif;
+    text-transform: none;
+  }
+}
+
+
+/* Registration */
+
+h1.title,
+h3.subtitle  {
+  text-align: center;
+}
+
+h1.title::before,
+h1.title::after {
+  content: "\25C6";
+  margin: 0 0.5rem;
+  color: $sf18-orange;
+
+}
+
+.passes {
+  display: flex;
+  justify-content: space-around;
+  .pass {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 16rem;
+    background-color: $sf18-lighter-blue;
+    //background-color: paper-brown?;
+    border: solid 3px black;
+    border-radius: 15px;
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+    h5 {
+      margin: 1rem 0;
+    }
+    .features {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+    }
+    .price {
+      font-weight: bold;
+      border: dotted 2px black;
+    }
+  }
+
+}
+
+
+
+/* Artists */
+
+.artists {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+  img {
+    border-radius: 50%;
+  }
+}
+
+
+.artist {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  margin: 2rem;
+  img {
+    display: block;
+    width: auto;
+    height: 100%;
+  }
+}
+
+.artist:first-of-type {
+  //margin-left: 0;
+}
+
+.artist:hover {
+  .overlay {
+    opacity: 1;
+  }
+}
+
+.artst-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  //opacity: 0;
+  transition: 700ms ease;
+  //background-color: rgba(38, 38, 38, 0.5);
+  background-color: rgba(191, 129, 73, 0.75);
+  border-radius: 50%;
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 1.5;
+  }
+}
+
+
+
+/* Artists single posts */
+
+.post-artists {
+  flex: 1 0 auto;
+  background-image: url(http://localhost/smokeyfeet/wp-content/uploads/2018/03/sails.png);
+  background-size: 400px;
+  padding-top: 2rem;
+
+  h1 {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+  }
+  .artists-content {
+    display: flex;
+    margin-bottom: 2rem;
+    img {
+      margin-right: 2rem;
+      //border-radius: 50%;
+    }
+    p {
+      font-size: 1.25rem;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+  }
+  a {
+    display: block;
+    text-align: center;
+  }
+}
+
+/* Footer */
+
+footer {
+  overflow: hidden;
+  flex-shrink: 0;
+  padding: 3rem 3rem;
+
+  p {
+    padding: 0.5rem 0;
+    color: white;
+  }
+
+  .rotated {
+    position: relative;
+    transform: rotate($rotation);
+    width: 100%;
+    margin-bottom: -6rem;
+    margin-left: -5rem;
+    padding: 0rem 5rem 5rem 5rem;
+    //padding-right: 50rem;
+    background-color: $backgr-color-dark;
+  }
+  .unrotated {
+    transform: rotate(-1*$rotation);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .contact {
+    text-align: right;
+  }
+}
+
+
+/* Responsive design */
+
+@media only screen and (max-width: 1440px) {
+  main .container {
+    width: 992px;
+  }
+  #general-info .date-location > * {
+    width: 30%;
+  }
+
+}
+
+@media only screen and (max-width: 1024px) {
+  main .container {
+    width: 768px;
+  }
+  #general-info .date-location > * {
+    width: 40%;
+  }
+  #testimonials {
+    //height: 420px;
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  main .container {
+    width: 600px;
+    padding: 1rem 1rem;
+  }
+  #general-info {
+    h2 {
+      line-height: 1.5;
+    }
+  }
+  #general-info .date-location > * {
+    width: 50%;
+  }
+  #parallax-1 {
+    height: 200px;
+  }
+  #testimonials {
+    //height: 470px;
+    h3 {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .container {
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .testimonialSlides {
+      height: 18rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  main .container {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 1rem 0;
+    padding: 1rem 0;
+  }
+  #general-info {
+    .reg-opens {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 1rem 0.5rem 1.4rem 0.5rem;
+    }
+  }
+  #parallax-1 {
+    height: 150px;
+  }
+  #testimonials {
+    .quote {
+      font-size: 1.75rem;
+    }
+    .author {
+      padding-right: 1rem;
+    }
+}
+}
+
+@media only screen and (max-width: 550px) {
+  .jumbotron {
+    display: none;
+  }
+  #mobile-logo {
+    display: block;
+  }
+  #testimonials {
+    h3 {
+      margin-top: 0;
+    }
+  }
+  #parallax-1 {
+    height: 100px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+
+  #general-info {
+    .date-location {
+      flex-direction: column;
+      align-items: center;
+    }
+    .reg-opens {
+      padding: 0;
+      padding-bottom: 0.25rem;
+    }
+  }
+
+  #testimonials {
+    h3 {
+      font-size: 1.25rem;
+    }
+    .quote {
+      font-size: 1.5rem;
+    }
+    .testimonial {
+      i {
+        font-size: 1rem;
+      }
+      .fa-quote-left {
+        top: 0px;
+        left: -10px;
+      }
+      .fa-quote-right {
+        bottom: 0px;
+        right: -10px;
+      }
+    }
+
+  }
+  footer {
+    .unrotated {
+      flex-direction: column-reverse;
+      padding-top: 1rem;
+      align-items: flex-start;
+    }
+    .contact {
+        text-align: left;
+    }
+    .copyright {
+      margin-top: 0.5rem;
+    }
+    p {
+      padding: 0.25rem 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  #testimonials {
+    .testimonialSlides {
+      height: 20rem;
+    }
+  }
+}

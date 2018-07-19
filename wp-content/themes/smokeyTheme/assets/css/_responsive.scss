@@ -1,0 +1,172 @@
+/* Responsive design */
+
+@media only screen and (max-width: 1440px) {
+  main .container {
+    width: 992px;
+  }
+  #general-info .date-location > * {
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  main .container {
+    width: 768px;
+  }
+  #general-info .date-location > * {
+    width: 40%;
+  }
+  .parallax {
+    height: 250px;
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  main .container {
+    width: 600px;
+    padding: 1rem 1rem;
+  }
+  #general-info {
+    h2 {
+      //line-height: 1.5;
+    }
+  }
+  #general-info .date-location > * {
+    width: 50%;
+  }
+  .parallax {
+    height: 200px;
+  }
+  #testimonials {
+    h3 {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .container {
+      //margin-top: 0;
+      //padding-top: 0;
+    }
+    .testimonialSlides {
+      height: 18rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  main .container {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 1rem 0;
+    padding: 1rem 0;
+  }
+  .jumbotron {
+    display: none;
+  }
+  #logo--static {
+    display: block;
+  }
+  #general-info {
+    .reg-opens {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 1rem 0.5rem 1.4rem 0.5rem;
+    }
+  }
+  .parallax {
+    height: 150px;
+  }
+  #testimonials {
+    .quote {
+      font-size: 1.75rem;
+    }
+    .author {
+      padding-right: 1rem;
+    }
+}
+}
+
+@media only screen and (max-width: 550px) {
+
+
+  #testimonials {
+    h3 {
+      margin-top: 0;
+    }
+  }
+  .parallax {
+    //height: 100px;
+  }
+}
+
+@media only screen and (max-width: 485px) {
+
+  #general-info {
+    .date-location {
+      flex-direction: column;
+      align-items: center;
+    }
+    .location {
+      margin-top: 1.5rem;
+    }
+    .reg-opens {
+      padding: 1rem 0.15rem 0.5rem 0.15rem;
+    }
+  }
+
+  #testimonials {
+    h3 {
+      font-size: 1.25rem;
+    }
+    .quote {
+      font-size: 1.5rem;
+    }
+    .testimonial {
+      i {
+        font-size: 1rem;
+      }
+      .fa-quote-left {
+        top: 0px;
+        left: -10px;
+      }
+      .fa-quote-right {
+        bottom: 0px;
+        right: -10px;
+      }
+    }
+
+  }
+  footer {
+    .sloped-top {
+      flex-direction: column-reverse;
+      //padding-top: 1rem;
+      align-items: flex-end;
+    }
+    .contact {
+        text-align: right;
+    }
+    .copyright {
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .social a {
+      font-size: 1.75rem;
+    }
+    p {
+      padding: 0.25rem 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  #testimonials {
+    .testimonialSlides {
+      height: 20rem;
+    }
+    .quote {
+      line-height: 1.25;
+    }
+  }
+}

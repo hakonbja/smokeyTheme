@@ -1,0 +1,442 @@
+/*!
+Theme Name: SmokeyTheme
+Author: Hakon
+Version: 1.0
+*/
+
+
+/* Import style reset */
+
+@import '_reset.scss';
+
+
+/* Font import */
+
+@font-face {
+    font-family: "Neptune";
+    src: url(./assets/fonts/neptune.otf);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+
+/* Variables */
+
+$sf18-blue: rgb(47, 109, 116);
+$sf18-light-blue: rgb(126, 171, 175);
+$sf18-lighter-blue: rgb(178, 197, 200);
+$clr-orange: rgb(191, 129, 73);
+
+$backgr-color-dark: rgba(38, 38, 38, 1);
+$backgr-color-light: rgba(178, 197, 200, 1);
+//$backgr-color-light: rgba(126, 171, 175, 0.75);
+//$backgr-color-light: rgba(47, 109, 116, 0.75);
+
+$rotation: -3deg;
+
+
+/* Extends */
+
+%neptune {
+  font-family: 'Neptune', sans-serif;
+  text-transform: uppercase;
+}
+
+/* Mixin */
+
+@mixin fontawesome-icon {
+  font-family: FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* General styling */
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-size: 16px;
+  scroll-behavior: smooth;
+
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  @extend .sails-background
+}
+
+.sails-background {
+  background-image: url(./assets/img/sails.png);
+  background-size: 400px;
+}
+
+h1 {
+  font-size: 2rem;
+  //margin-bottom: 1.5rem;
+  @extend %neptune;
+}
+
+h2 {
+  font-size: 1.75rem;
+  @extend %neptune;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  @extend %neptune;
+}
+
+h4 {
+  font-size: 1.35rem;
+  @extend %neptune;
+}
+
+h5 {
+  font-size: 1.2rem;
+  font-family: 'Lato', sans-serif;
+}
+
+h6 {
+  font-family: 'Lato', sans-serif;
+}
+
+p,
+a {
+  font-family: 'Lato', sans-serif;
+}
+
+a:visited,
+a:active,
+a {
+  color:inherit;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+}
+
+a.back-to-front {
+  margin: 1rem;
+}
+
+a.back-to-front::before {
+  content: '\f104' '\f104' ' ';
+  @include fontawesome-icon();
+  color: $clr-orange;
+  font-weight: 900;
+}
+
+q {
+  quotes: '\f10d' '\f10e';
+  &::before,
+  &::after {
+    @include fontawesome-icon();
+  }
+  &::before {
+    content: open-quote;
+  }
+  &::after {
+    content: close-quote;
+  }
+}
+
+
+
+main {
+  overflow: hidden;
+  flex: 1 0 auto;
+}
+
+.container {
+  width: 1140px;
+  padding: 2.5rem;
+  margin: 1rem auto;
+}
+
+
+
+/* Header */
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  transition: top 750ms;
+  width: 100%;
+  height: 4rem;
+  color: white;
+  background-color: $backgr-color-dark;
+  margin: 0;
+
+  ul {
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  a {
+    padding: 1.5rem;
+    height: 100%;
+    min-width: 160px;
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  a:hover {
+    background-color: rgb(147, 147, 147);
+  }
+}
+
+#logo--static {
+  //display: none;
+  height: 60px;
+  cursor: pointer;
+  /*position: absolute;
+  left: 0;
+  margin-left: .5rem;*/
+}
+
+#static-logo {
+  height: 60px;
+}
+
+.stickyNavbar {
+  top: 0px !important;
+  position: fixed;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Main content */
+
+.content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Jumbotron */
+.jumbotron {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(./assets/img/group-photo-2017.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: grey;
+  background-blend-mode: soft-light;
+  #logo {
+    z-index: 100;
+    height: 40%;
+    width: auto;
+    cursor: pointer;
+    filter: drop-shadow(5px 5px 5px #222);
+    transform: translateZ(0); //maybe fixes jitter in Firefox
+  }
+}
+
+.stickyLogo {
+  position: fixed;
+  top: 1px;
+}
+
+.black-strip {
+  height: 4rem;
+  background-color: $backgr-color-dark;
+}
+
+.parallax {
+  height: 300px;
+  width: 110vw;
+  margin: 1.5rem 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 130%;
+  background-color: grey;
+  background-blend-mode: soft-light;
+  clip-path: polygon( 0 100%,
+                      0 5vw,
+                      100% 0%,
+                      100% calc(100% - 5vw));
+}
+
+
+main .parallax:nth-of-type(1) {
+  background-image: url(./assets/img/social-dance-omval.jpg);
+}
+
+main .parallax:nth-of-type(2) {
+  background-image: url(./assets/img/registration.jpg);
+}
+
+
+
+
+/* General info */
+
+#general-info {
+  text-align: center;
+  h1 {
+    font-size: 4rem;
+    margin: 0 1rem 1rem 1rem;
+  }
+  h2 {
+    margin: 1.5rem;
+    line-height: 1.5;
+  }
+  .date-location {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+    letter-spacing: 0.1rem;
+
+  }
+  .date,
+  .location {
+    width: 25%;
+    margin: 0;
+  }
+  i {
+    font-size: 5rem;
+    color: rgba(191, 129, 73, 0.9);
+  }
+  h5 {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+  .reg-opens {
+    display: inline-block;
+    padding: 1rem 1.5rem 1.4rem 1.5rem;
+    box-shadow: 0px 1px 3px 1px grey;
+    //white-space: nowrap;
+    //border-radius: 5px;
+    //border: solid $clr-orange 2px;
+    background-color: rgba(225,225,225, 1);
+    h2 {
+      margin: 0;
+      display: inline-block;
+    }
+    span {
+      display: inline-block;
+      line-height: 1.5;
+      font-size: 1.75rem;
+      @extend %neptune;
+    }
+  }
+}
+
+
+/* Testimonials */
+
+#testimonials {
+  //height: 375px;
+  //overflow: hidden;
+  position: relative;
+  .container {
+    padding: 1rem 2.5rem;
+  }
+  h3 {
+    margin: 2rem;
+    line-height: 1.5;
+  }
+  .testimonialSlides {
+    height: 12rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .testimonial {
+    position: absolute;
+    left: 150%;
+    right: 0;
+    margin: 0 auto;
+    width: 70%;
+    opacity: 0;
+    q::before,
+    q::after {
+      color: rgba(191, 129, 73, 0.9);
+      position: relative;
+      font-size: 1.75rem;
+    }
+    q::before {
+      top: -10px;
+      left: -10px;
+    }
+    q::after {
+      top: 10px;
+      left: 10px;
+    }
+  }
+  .testimonial:first-of-type {
+    left: 0;
+    opacity: 1;
+  }
+  .quote {
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  .author {
+    text-align: right;
+    padding-right: 3rem;
+    font-family: 'Lato', sans-serif;
+    text-transform: none;
+  }
+}
+
+/* 404 Error template */
+
+.error {
+  h3 {
+    text-align: center;
+    margin: 2rem;
+  }
+}
+
+/* Footer */
+
+
+
+footer {
+  overflow: hidden;
+  flex-shrink: 0;
+  justify-content: center;
+
+  .sloped-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    box-sizing: border-box;
+    background-color: $backgr-color-dark;
+    clip-path: polygon( 0 100%,
+                        0 5vw,
+                        100% 0%,
+                        100% 100% );
+  }
+  p {
+    padding: 0.5rem 0;
+    color: white;
+  }
+  .social a {
+    font-size: 1.25rem;
+    color: white;
+    margin: .375rem .5rem .375rem 0;
+  }
+  .contact {
+    text-align: right;
+  }
+}
+
+// Import responsive design
+@import 'responsive';
