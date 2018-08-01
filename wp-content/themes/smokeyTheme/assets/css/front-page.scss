@@ -1,0 +1,157 @@
+/* Front page */
+
+/* Parallax */
+
+.parallax {
+  height: 300px;
+  width: 100vw;
+  margin: 2.5rem 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: grey;
+  background-blend-mode: soft-light;
+  @extend .sloped-top-bottom;
+}
+
+
+.parallax:nth-of-type(1) {
+  background-image: url(./assets/img/social-dance-omval-low.jpg);
+}
+
+.parallax:nth-of-type(2) {
+  background-image: url(./assets/img/simon-and-ida-low.jpg);
+}
+
+.parallax:nth-of-type(3) {
+  background-image: url(./assets/img/registration-low.jpg);
+}
+
+
+/* General info */
+
+#general-info {
+  text-align: center;
+  h1 {
+    font-size: 4rem;
+    margin: 0 1rem 1rem 1rem;
+  }
+  h2 {
+    margin: 1.5rem;
+    line-height: 1.5;
+  }
+  .date-location {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+    letter-spacing: 0.1rem;
+
+  }
+  .date,
+  .location {
+    width: 25%;
+    margin: 0;
+  }
+  i {
+    font-size: 5rem;
+    color: rgba(191, 129, 73, 0.9);
+  }
+  h5 {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+  .reg-opens {
+    display: inline-block;
+    padding: 1rem 1.5rem 1.4rem 1.5rem;
+    box-shadow: 0px 1px 3px 1px grey;
+    //white-space: nowrap;
+    //border-radius: 5px;
+    //border: solid $clr-orange 2px;
+    background-color: rgba(225,225,225, 1);
+    h2 {
+      margin: 0;
+      display: inline-block;
+    }
+    span {
+      display: inline-block;
+      line-height: 1.5;
+      font-size: 1.75rem;
+      @extend %neptune;
+    }
+  }
+}
+
+
+/* Testimonials */
+
+#testimonials {
+  //height: 375px;
+  //overflow: hidden;
+  position: relative;
+  .container {
+    padding: 1rem 2.5rem;
+  }
+  h3 {
+    margin: 2rem;
+    line-height: 1.5;
+  }
+  .testimonialSlides {
+    height: 12rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .testimonial {
+    position: absolute;
+    left: 150%;
+    right: 0;
+    margin: 0 auto;
+    width: 70%;
+    opacity: 0;
+    q::before,
+    q::after {
+      color: rgba(191, 129, 73, 0.9);
+      position: relative;
+      font-size: 1.75rem;
+    }
+    q::before {
+      top: -10px;
+      left: -10px;
+    }
+    q::after {
+      top: 10px;
+      left: 10px;
+    }
+  }
+  .testimonial:first-of-type {
+    left: 0;
+    opacity: 1;
+  }
+  .quote {
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  .author {
+    text-align: right;
+    padding-right: 3rem;
+    font-family: 'Lato', sans-serif;
+    text-transform: none;
+  }
+}
+
+q {
+  quotes: '\f10d' '\f10e';
+  &::before,
+  &::after {
+    @include fontawesome-icon();
+  }
+  &::before {
+    content: open-quote;
+  }
+  &::after {
+    content: close-quote;
+  }
+}

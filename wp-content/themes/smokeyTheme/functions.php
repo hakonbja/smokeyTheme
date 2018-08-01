@@ -6,8 +6,11 @@ function smokeyTheme_resources() {
   if (is_front_page()) {
     wp_enqueue_script('front-page', get_template_directory_uri() . '/assets/js/front-page.js', array('jquery'), null, true);
   } else {
-
+    wp_enqueue_script('not-front-page', get_template_directory_uri() . '/assets/js/other.js', array('jquery'), null, true);
+    wp_enqueue_script('jquery-ui', get_template_directory_uri() . '/assets/js/jquery-ui.min.js', array('jquery'), null, true);
   }
+
+
 }
 
 add_action('wp_enqueue_scripts', 'smokeyTheme_resources');
@@ -18,10 +21,13 @@ add_action('after_setup', 'smokeyTheme_resources');
 add_theme_support( 'menus' );
 
 //Activate nav menu options
-function smokeyTheme_register_nav_menu() {
-  register_nav_menu('primary', __(' Header Navigation Menu' ));
+function smokeyTheme_register_nav_menus() {
+  register_nav_menus( array(
+        'navbar_left' => 'Navbar Left of Logo',
+        'navbar_right' => 'Navbar Right of Logo'
+  ));
 }
-add_action('init', 'smokeyTheme_register_nav_menu');
+add_action('init', 'smokeyTheme_register_nav_menus');
 
 // Add Featured image to Artists post type
 add_theme_support( 'post-thumbnails', array( 'artists' ) );          // Posts only

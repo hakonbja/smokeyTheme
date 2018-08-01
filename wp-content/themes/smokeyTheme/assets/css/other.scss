@@ -1,0 +1,146 @@
+/* Not front page */
+
+
+/* MailChimp signup form */
+
+#mc_embed_signup {
+  width: 30%;
+  font-family: 'Lato', sans-serif;
+  padding: 2.5rem 0;
+  margin: 1rem auto;
+  h3 {
+    text-align: center;
+    line-height: 1.5rem;
+  }
+
+  .mc-field-group {
+    margin: 1rem auto 0.5rem auto;
+  }
+
+  label {
+    display: block;
+    margin: 0;
+    padding: 0.35rem 0.5rem 0.35rem 0;
+    text-align: left;
+    font-weight: bold;
+    letter-spacing: 0.02rem;
+  }
+  input.email {
+    display: block;
+    margin: 0 auto;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: solid 2px $clr-bg-black;
+    font-size: 1rem;
+    background: #e1e1e1;
+  }
+  input:focus {
+    outline: none;
+  }
+  input.mce_inline_error {
+    border-color: $clr-orange !important;
+  }
+
+  div.mce_inline_error {
+    background-color: inherit !important;
+    font-weight: normal !important;
+    color: $clr-orange !important;
+    //position: absolute;
+    margin: 0 !important;
+  }
+
+  .clear {
+    text-align: center;
+
+  }
+  .button {
+    margin-top: 1.25rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: white;
+    background-color: $clr-bg-black;
+    letter-spacing: 0.03rem;
+    width: 100%;
+  }
+
+  .input-group {
+    display: none;
+  }
+
+  .response {
+    line-height: 1.5;
+  }
+
+}
+
+/* 404 Error template */
+
+.error {
+  h3 {
+    text-align: center;
+    margin: 2rem;
+  }
+}
+
+/* FAQ template */
+
+#faq h1 {
+  margin-bottom: 2rem;
+}
+
+.faq--single {
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.plus-sign,
+.plus-sign::before {
+  position: absolute;
+  background-color: black;
+  height: 3px;
+  width: 20px;
+  transition: all ease-in-out 400ms;
+}
+
+.plus-sign {
+  top: 15px;
+  left: 0px;
+}
+
+.plus-sign::before {
+  content: "";
+  transform: rotate(90deg);
+}
+
+.plus-sign--open .plus-sign::before {
+  content: "";
+  transform: rotate(180deg);
+}
+
+.question {
+  //padding-left: 1.5rem;
+  padding: 0.25rem 0rem 0.25rem 1.5rem;
+}
+
+.answer {
+  height: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-top: 0.5rem;
+  padding: 0 0.75rem;
+  line-height: 1.5;
+  background-color: rgba(256, 256, 256, 0.6);
+  border-radius: 5px;
+}
+
+.answer--open {
+  height: auto;
+  padding: 0.75rem;
+}

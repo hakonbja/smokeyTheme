@@ -1,0 +1,32 @@
+/* Footer */
+
+footer {
+  overflow: hidden;
+  flex-shrink: 0;
+  justify-content: center;
+
+  .footer--styling {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    box-sizing: border-box;
+    background-color: $clr-bg-black;
+  }
+
+  
+
+  p {
+    padding: 0.5rem 0;
+    color: white;
+  }
+  .social a {
+    font-size: 1.25rem;
+    color: white;
+    margin: .375rem .5rem .375rem 0;
+  }
+  .contact {
+    text-align: right;
+  }
+}

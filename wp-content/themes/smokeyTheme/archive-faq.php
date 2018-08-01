@@ -6,41 +6,39 @@
  -->
 
  <?php get_header();?>
+<main>
+  <div id="faq" class="container">
+    <h1>Frequently asked questions</h1>
 
-   <div class="faq">
-     <h1>Frequently asked questions</h1>
-     <div class="container">
-       <?php
-       $sw_args = array(
-           'post_type' => 'faq',
-           'orderby' => 'menu_order',
-           'order' => 'ASC',
-       );
+      <?php
+      $sw_args = array(
+          'post_type' => 'faq',
+          'orderby' => 'menu_order',
+          'order' => 'ASC',
+      );
 
-       $the_query = new WP_Query( $sw_args );
-       if ( $the_query->have_posts() ) {
-         while ( $the_query->have_posts() ) {
-             $the_query->the_post();
-             $object = get_post();
-             $answer = get_post_meta($object->ID, 'answer', true);?>
-             <div class="faq--single">
-               <div class="question">
-                 <h3><?php the_title(); ?></h3>
-                 <?php
-                   if ($answer) {
-                     echo "<h5>" . $answer . "</h5>";
-                   }
-                 ?>
-               </div>
-
+      $the_query = new WP_Query( $sw_args );
+      if ( $the_query->have_posts() ) {
+        while ( $the_query->have_posts() ) {
+            $the_query->the_post();
+            $object = get_post();
+            $answer = get_post_meta($object->ID, 'answer', true);?>
+            <div class="faq--single">
+              <div class="plus-sign"></div>
+              <div class="question">
+                <h4><?php the_title(); ?></h4>
+              </div>
+              <div class="answer">
+                <h5><?php echo $answer;?></h5>
+              </div>
             </div>
-            <?php
-           }
-       }
-       /* Restore original Post Data */
-       wp_reset_postdata();
-       ?>
+           <?php
+          }
+      }
+      /* Restore original Post Data */
+      wp_reset_postdata();
+      ?>
+  </div>
+</main>
 
-     </div>
-   </div>
  <?php get_footer(); ?>

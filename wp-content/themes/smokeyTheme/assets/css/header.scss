@@ -1,0 +1,124 @@
+/* Header */
+
+.content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  transition: top 750ms;
+  width: 100%;
+  height: 4rem;
+  color: white;
+  background-color: $clr-bg-black;
+  margin: 0;
+
+  .menu-left-of-logo-container *,
+  .menu-right-of-logo-container * {
+    a {
+      padding: 1.5rem;
+      margin: 0;
+      height: 100%;
+      min-width: 160px;
+      display: inline-block;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    a:hover {
+      //color: black;
+      //background-color: rgb(147, 147, 147);
+      background-color: rgba(191, 129, 73, 0.75);
+    }
+  }
+
+  .menu-left-of-logo-container {
+    grid-column: 1 / span 1;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0.75rem;
+  }
+
+  #logo--static {
+    grid-column: 2 / span 1;
+    height: 60px;
+    cursor: pointer;
+  }
+
+  a.logo--static {
+    grid-column: 2 / span 1;
+  }
+
+  .menu-right-of-logo-container {
+    grid-column: 3 / span 1;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 0.75rem;
+  }
+
+  ul {
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .dropdown {
+      position: relative;
+      display: inline-block;
+  }
+
+}
+  .stickyNavbar {
+    top: 0px !important;
+    position: fixed;
+    /*.menu-left-of-logo-container *,
+    .menu-right-of-logo-container * {
+      opacity: 1;
+    }*/
+  }
+
+
+#navbar * {
+//  visibility: hidden;
+}
+
+.black-strip {
+  height: 4rem;
+  background-color: $clr-bg-black;
+}
+
+/* Jumbotron */
+.jumbotron {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(./assets/img/group-photo-2017-low.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: grey;
+  background-blend-mode: soft-light;
+  .logo-container {
+    position: absolute;
+    left: 50%;
+  }
+  #logo {
+    z-index: 100;
+    height: 40%;
+    width: auto;
+    cursor: pointer;
+    filter: drop-shadow(5px 5px 5px #222);
+    transform: translateZ(0); //maybe fixes jitter in Firefox
+  }
+}
+
+.stickyLogo {
+  position: fixed;
+  top: 1px;
+}

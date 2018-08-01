@@ -14,6 +14,7 @@
     <meta name="msapplication-TileColor" content="#00aba9">
     <meta name="msapplication-config" content="<?php echo get_template_directory_uri(); ?>/assets/favicon/browserconfig.xml">
     <meta name="theme-color" content="#a6b9bd">
+    <!-- <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css"> -->
     <title><?php bloginfo('name'); ?></title>
     <?php wp_head(); ?>
   </head>
@@ -25,15 +26,19 @@
 
       <?php if ( is_front_page() ) { ?>
         <div class="jumbotron">
-            <img id="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_no_bg.png" alt="">
+          <img id="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_no_bg.png" alt="">
         </div>
         <?php
       }?>
 
         <div id="navbar" class="navbar">
-
-          <img id="logo--static" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_no_bg.png" alt="">
-          <?php //wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+          <?php wp_nav_menu( array( 'theme_location' => 'navbar_left' ) ); ?>
+          <?php if ( is_front_page() ) { ?>
+            <img id="logo--static" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_no_bg.png" alt="">
+          <?php } else { ?>
+            <a class="logo--static" href="<?php echo home_url(); ?>"><img id="logo--static" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_no_bg.png" alt=""></a>
+          <?php } ?>
+          <?php wp_nav_menu( array( 'theme_location' => 'navbar_right' ) ); ?>
           <!--
           <ul class="container">
             <li><a href="#registration">Registration</a></li>

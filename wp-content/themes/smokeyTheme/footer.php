@@ -6,7 +6,7 @@
   <?php } ?>
 
   <footer>
-    <div class="sloped-top">
+    <div class="footer--styling sloped-top">
         <div class="copyright">
           <div class="social">
             <a href="https://www.facebook.com/Smokey-Feet-181498711899234/" target="_blank" class="fa fa-facebook-square"></a>

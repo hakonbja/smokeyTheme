@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
 
 /*
- * Parallax stuff
+ * Parallax
  */
 
 $(window).scroll(function() {
@@ -10,7 +10,6 @@ $(window).scroll(function() {
 });
 
 function parallax() {
-
   var wScroll = $(window).scrollTop();
   var wWidth = $(window).width();
   var speed = 0.75;
@@ -23,78 +22,45 @@ function parallax() {
       $(this).css('background-position', 'center ' + newHeight + 'px')
     }
   })
-
 }
 
-/* complicated version
-  (function($){
-  $.fn.parallax = function(options){
-    var $$ = $(this);
-    offset = $$.offset();
-    var defaults = {
-      'start': 0,
-      'stop': offset.top + $$.height(),
-      'coeff': 0.95
-    };
-    var opts = $.extend(defaults, options);
-    return this.each(function(){
-
-      $(window).bind('scroll', function() {
-        var mobileLogo = $('#logo--static').css('display');
-        windowTop = $(window).scrollTop();
-        if((windowTop >= opts.start) && (windowTop <= opts.stop) && (mobileLogo == 'none')) {
-          let mq = window.matchMedia( '(min-width: 1440px)' );
-          let heightShift = mq.matches ? -350 : -150;
-          let leftShift = mq.matches ? -300 : -200;
-          newCoord = windowTop * opts.coeff + heightShift;
-          $$.css({
-              'background-position': leftShift + 'px '+ newCoord  + 'px'
-            });
-          } else {
-            $$.css({
-                'background-position': 'center'
-              });
-          }
-        });
-      });
-    };
-  })(jQuery);
-
-// call the plugin
-var i = -0.075;
-$('#parallax-1').parallax({ 'coeff':i });
-*/
 
 /*
- * Sticky navbar
+ * Sticky navbar + anchor fade in
 */
 
  var jumbotronTop = $('.jumbotron').offset().top;
  var jumbotronHeight = $('.jumbotron').height();
  var navbarHeight = $('#navbar').height();
  var stickyNavTop = $('#navbar').offset().top;
+ var $navElements = $('.menu-left-of-logo-container *, .menu-right-of-logo-container *');
 
  function stickyNav() {
    var scrollTop = $(window).scrollTop();
-   var mobileLogo = $('#logo--static').css('display');
-   if (scrollTop >= stickyNavTop /*|| mobileLogo == 'block'*/) {
+   if (scrollTop >= stickyNavTop) {
      $('#navbar').addClass('stickyNavbar');
      $('#general-info').css('margin-top', '80px');
      $('#logo').hide();
-     $('#logo--static').show();
+     $('#logo--static').css('visibility', 'visible');
+     $navElements.fadeIn(300);
    } else {
      $('#navbar').removeClass('stickyNavbar');
      $('#general-info').css('margin-top', '0');
      $('#logo').show();
-     $('#logo--static').hide();
+     $('#logo--static').css('visibility', 'hidden');
    }
  };
+
+ function anchorsHideOnStart() {
+   $navElements.hide();
+ }
 
 
 
 /*
  * Sticky logo + resize
  */
+
 var logoTop = $('#logo').offset().top;
 var jumbotronTop = $('.jumbotron').offset().top;
 var jumbotronHeight = $('.jumbotron').height();
@@ -134,6 +100,7 @@ function resizeLogo() {
 
 
 // Call sticky functions
+anchorsHideOnStart();
 stickyNav();
 stickyLogo();
 resizeLogo();
@@ -150,8 +117,7 @@ $(window).scroll(function() {
 $('#logo').click(function() {
   var scrollTop = $(window).scrollTop();
   var jumbotronBottom = jumbotronTop + jumbotronHeight;
-  if (scrollTop < 600 || scrollTop > jumbotronBottom) {
-
+  if (scrollTop < 600) {
     $("html, body").animate({
           scrollTop: jumbotronBottom
         },
@@ -163,9 +129,18 @@ $('#logo').click(function() {
   }
 });
 $('#logo--static').click(function() {
-  $("html, body").animate(
-      {scrollTop: 0},
-      100,);
+  var scrollTop = $(window).scrollTop();
+  var jumbotronBottom = jumbotronTop + jumbotronHeight;
+  let jumbotronDisplay = $('.jumbotron').css('display');
+  if (scrollTop > jumbotronBottom && jumbotronDisplay == 'flex') {
+    $("html, body").animate(
+        {scrollTop: jumbotronBottom},
+        100,);
+  } else {
+    $("html, body").animate(
+        {scrollTop: 0},
+        100,);
+  }
 });
 
 
@@ -235,6 +210,7 @@ $(window).scroll(function() {
     });
   }
 
-  slideTestimonials();
+slideTestimonials();
+
 
 });

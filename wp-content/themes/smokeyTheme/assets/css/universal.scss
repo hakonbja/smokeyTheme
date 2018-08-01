@@ -1,0 +1,109 @@
+/* Universal styling */
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  @extend .sails-background
+}
+
+.container {
+  width: 1140px;
+  padding: 2.5rem;
+  margin: 1rem auto;
+}
+
+.container-fluid {
+  width: 75%;
+  padding: 2.5rem;
+  margin: 1rem auto;
+}
+
+.sails-background {
+  background-image: url(./assets/img/sails.png);
+  background-size: 400px;
+}
+
+.sloped-top-bottom {
+  clip-path: polygon( 0 100%,
+                      0 5vw,
+                      100% 0%,
+                      100% calc(100% - 5vw));
+}
+
+.sloped-top {
+  margin-top: 2.5rem;
+  clip-path: polygon( 0 100%,
+                      0 5vw,
+                      100% 0%,
+                      100% 100% );
+}
+
+h1 {
+  font-size: 2rem;
+  //margin-bottom: 1.5rem;
+  @extend %neptune;
+}
+
+h2 {
+  font-size: 1.75rem;
+  @extend %neptune;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  @extend %neptune;
+}
+
+h4 {
+  font-size: 1.35rem;
+  @extend %neptune;
+}
+
+h5 {
+  font-size: 1.2rem;
+  font-family: 'Lato', sans-serif;
+}
+
+h6 {
+  font-family: 'Lato', sans-serif;
+}
+
+p,
+a {
+  font-family: 'Lato', sans-serif;
+}
+
+a:visited,
+a:active,
+a {
+  color:inherit;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+}
+
+a.back-to-front {
+  margin: 1rem;
+}
+
+a.back-to-front::before {
+  content: '\f104' '\f104' ' ';
+  @include fontawesome-icon();
+  color: $clr-orange;
+  font-weight: 900;
+}
+
+
+
+main {
+  overflow: hidden;
+  flex: 1 0 auto;
+}

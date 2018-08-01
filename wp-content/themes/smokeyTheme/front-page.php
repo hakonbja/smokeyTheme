@@ -18,11 +18,13 @@
         <div class="reg-opens fade-in fade-late">
             <h2>Registration&nbsp;opens in&nbsp;January&nbsp;2019</h2>
         </div>
+        <div class="signup-form">
+
+        </div>
       </div>
     </section>
 
     <div class="parallax"></div>
-
 
     <section id="testimonials">
       <div class="container">
@@ -59,6 +61,14 @@
 
         </div>
       </div>
+    </section>
+
+    <div class="parallax"></div>
+
+    <section>
+
+      <?php get_template_part('mailchimp-signup') ?>
+
     </section>
 
   </main>

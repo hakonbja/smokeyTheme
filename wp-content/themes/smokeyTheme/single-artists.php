@@ -7,6 +7,7 @@
 
 <?php get_header();?>
 
+<main>
   <div class="post-artists">
     <div class="container">
       <?php
@@ -29,4 +30,6 @@
 
     </div>
   </div>
+</main>
+
 <?php get_footer(); ?>
