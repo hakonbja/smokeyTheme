@@ -7,20 +7,39 @@
 }
 
 .navbar {
-  display: grid;
-  grid-template-columns: 1fr 60px 1fr;
-  justify-content: center;
-  align-items: center;
-  z-index: 50;
+  z-index: 10;
+  position: relative;
   transition: top 750ms;
   width: 100%;
   height: 4rem;
   color: white;
   background-color: $clr-bg-black;
   margin: 0;
+  box-shadow: 0 1px 3px $clr-bg-black;
+}
+
+#logo--static {
+  grid-column: 2 / span 1;
+  height: 60px;
+  cursor: pointer;
+}
+
+a.logo--static {
+  grid-column: 2 / span 1;
+}
+
+.desktop-navbar {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 
   .menu-left-of-logo-container *,
   .menu-right-of-logo-container * {
+    ul {
+      display: flex;
+    }
     a {
       padding: 1.5rem;
       margin: 0;
@@ -29,6 +48,7 @@
       display: inline-block;
       box-sizing: border-box;
       text-align: center;
+      transition: opacity 450ms;
     }
     a:hover {
       //color: black;
@@ -44,16 +64,6 @@
     margin-right: 0.75rem;
   }
 
-  #logo--static {
-    grid-column: 2 / span 1;
-    height: 60px;
-    cursor: pointer;
-  }
-
-  a.logo--static {
-    grid-column: 2 / span 1;
-  }
-
   .menu-right-of-logo-container {
     grid-column: 3 / span 1;
     display: flex;
@@ -67,12 +77,94 @@
     justify-content: space-around;
   }
 
+
   .dropdown {
       position: relative;
       display: inline-block;
   }
-
 }
+
+  .mobile-navbar {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 32px;
+    transform: translateY(-50%);
+
+    .menu-icon {
+      position: relative;
+      padding: 1.5rem;
+      cursor: pointer;
+      height: 64px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+    }
+
+    span,
+    span::before,
+    span::after {
+      display: block;
+      background-color: $clr-bone-white;
+      height: 3px;
+      width: 2rem;
+      border-radius: 2px;
+      position: relative;
+      transition: all 450ms;
+    }
+    span::before,
+    span::after {
+      content: "";
+      position: absolute;
+    }
+    span::before {
+      bottom: 7px;
+    }
+    span::after {
+      bottom: -7px;
+    }
+    span.open {
+      transform: rotate(45deg);
+    }
+    span.open::before {
+      transform: rotate(90deg);
+      bottom: 0;
+    }
+    span.open::after {
+      transform: scale(0);
+    }
+    ul {
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      background-color: $clr-bg-black;
+      transform: scale(1, 0);
+      transform-origin: top;
+      transition: transform 450ms;
+      a {
+        padding: 1.5rem;
+        display: inline-block;
+        width: 100%;
+        box-sizing: border-box;
+        opacity: 0;
+        transition: opacity 450ms;
+      }
+      a:hover {
+        background-color: rgba(191, 129, 73, 0.75);
+      }
+    }
+    ul.open {
+      transform: scale(1);
+
+      a {
+        opacity: 1;
+        transition: opacity 450ms 200ms;
+      }
+    }
+
+  }
+
+
   .stickyNavbar {
     top: 0px !important;
     position: fixed;
@@ -97,6 +189,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
   background-image: url(./assets/img/group-photo-2017-low.jpg);
   background-size: cover;
@@ -108,6 +201,7 @@
     position: absolute;
     left: 50%;
   }
+
   #logo {
     z-index: 100;
     height: 40%;
@@ -115,6 +209,23 @@
     cursor: pointer;
     filter: drop-shadow(5px 5px 5px #222);
     transform: translateZ(0); //maybe fixes jitter in Firefox
+    // position: relative;
+  }
+  #jt-date {
+    color: white;
+    position: relative;
+    filter: drop-shadow(5px 5px 5px #222);
+    cursor: pointer;
+  }
+  #jt-date::after {
+    content: '\f103';
+    @include fontawesome-icon();
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: $clr-orange;
   }
 }
 

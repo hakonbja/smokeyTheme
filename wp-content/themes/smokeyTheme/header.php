@@ -27,18 +27,38 @@
       <?php if ( is_front_page() ) { ?>
         <div class="jumbotron">
           <img id="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_no_bg.png" alt="">
+          <h4 id="jt-date">23rd to 27th of May 2019</h4>
         </div>
         <?php
       }?>
 
         <div id="navbar" class="navbar">
-          <?php wp_nav_menu( array( 'theme_location' => 'navbar_left' ) ); ?>
-          <?php if ( is_front_page() ) { ?>
-            <img id="logo--static" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_no_bg.png" alt="">
-          <?php } else { ?>
-            <a class="logo--static" href="<?php echo home_url(); ?>"><img id="logo--static" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_no_bg.png" alt=""></a>
-          <?php } ?>
-          <?php wp_nav_menu( array( 'theme_location' => 'navbar_right' ) ); ?>
+          <div class="desktop-navbar">
+            <?php if ( is_front_page() ) { wp_nav_menu( array( 'theme_location' => 'navbar_left' ) ); }?>
+            <?php if ( is_front_page() ) { ?>
+              <img id="logo--static" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_no_bg.png" alt="">
+            <?php } else { ?>
+              <a class="logo--static" href="<?php echo home_url(); ?>"><img id="logo--static" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_no_bg.png" alt=""></a>
+            <?php } ?>
+            <?php if ( is_front_page() ) { wp_nav_menu( array( 'theme_location' => 'navbar_right' ) ); } ?>
+          </div>
+          <div class="mobile-navbar">
+            <?php if ( is_front_page() ) { ?>
+              <div id="hamburger" class="menu-icon">
+                <span></span>
+              </div>
+              <ul id="mobile-ul">
+                <li><a href="#a-registration">Registration</a></li>
+                <li><a href="#a-artists-selection">Artists</a></li>
+                <li><a href="#a-testimonials">Testimonials</a></li>
+                <li><a href="#a-newsletter">Newsletter</a></li>
+              </ul>
+
+
+            <?php } ?>
+
+          </div>
+
           <!--
           <ul class="container">
             <li><a href="#registration">Registration</a></li>

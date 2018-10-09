@@ -1,12 +1,6 @@
 jQuery(document).ready(function($) {
 
   /* FAQ answer open */
-  /*$('.faq-toggle').click(function() {
-    $(this).siblings('.answer').toggleClass('answer--open', 400);
-    $(this).toggleClass('plus-sign--open');
-    $(this).parent().siblings().children().removeClass('plus-sign--open');
-    $(this).parent().siblings().children().removeClass('answer--open', 400);
-  });*/
 
   $('.faq--single').click(function() {
     $(this).children('.plus-sign').toggleClass('plus-sign--open');
@@ -14,6 +8,26 @@ jQuery(document).ready(function($) {
     $(this).siblings().children('.plus-sign').removeClass('plus-sign--open');
     $(this).siblings().children('.answer').removeClass('answer--open', 400);
   });
+
+  /* All artists filter */
+
+  $('.btn').click(function() {
+    let role = $(this).attr('class').split(' ')[0];
+    $('.' + role).toggleClass('active inactive');
+  });
+
+/*
+  let filterButtons = document.querySelectorAll('.filter .btn');
+  Array.from(filterButtons).forEach((button) => {
+    button.addEventListener('click', (e) => {
+      console.log(e.path[1].classList[0]);
+      let className = e.path[1].classList[0];
+      let targets = document.getElementsByClassName(className);
+      console.log(targets);
+    });
+  });
+  */
+
 
 
 });

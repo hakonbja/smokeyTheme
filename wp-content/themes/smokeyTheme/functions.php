@@ -8,6 +8,7 @@ function smokeyTheme_resources() {
   } else {
     wp_enqueue_script('not-front-page', get_template_directory_uri() . '/assets/js/other.js', array('jquery'), null, true);
     wp_enqueue_script('jquery-ui', get_template_directory_uri() . '/assets/js/jquery-ui.min.js', array('jquery'), null, true);
+    // wp_enqueue_style('jquery-ui.min', get_template_directory_uri() . '/assets/css/jquery-ui.min.css');
   }
 
 
